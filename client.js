@@ -10,9 +10,12 @@ socket.on('connect', function () {
     
     socket.write('BEGIN\n');
     
-    i.question('> ', function(tos) {
-      socket.write(tos);
-    });
+    (function ask() {
+        i.question('> ', function(tos) {
+          socket.write(tos);
+          ask();
+        });
+    })();
 
     socket.on('data', function(data) {
       var str = S(data);
