@@ -11,6 +11,7 @@ var server = net.Server ( function(socket) {
   (function ask(){
     i.question('> ', function(msg) {
       socket.write(msg);
+      ask();
     });
   })();
 }).listen(0x5Ad);
