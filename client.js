@@ -1,6 +1,7 @@
 var net = require('net'),
     socket = new net.Socket(),
     rl = require('readline'),
+    i = rl.createInterface(process.stdin, process.stdout, null),
     S = String;
 
 socket.connect(0x5AD);
@@ -9,7 +10,7 @@ socket.on('connect', function () {
     
     socket.write('BEGIN\n');
     
-    rl.question('> ', function(tos) {
+    i.question('> ', function(tos) {
       socket.write(tos);
     });
 
