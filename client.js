@@ -19,7 +19,7 @@ socket.on('connect', function () {
 
     socket.on('data', function(data) {
       var str = S(data);
-      console.log(str);
+      console.log('Server sez: "' + str + '"\n');
       if (str == 'END') {
         socket.destroy();
       }
